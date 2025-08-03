@@ -1,0 +1,77 @@
+# Global
+.DS_Store
+Thumbs.db
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dotenv environment variables
+.env
+.env.*.local
+
+# VS Code settings
+.vscode/
+
+# OS generated
+*.swp
+*.swo
+
+#########################################
+# .NET-specific ignore rules
+#########################################
+
+# Build results
+**/bin/
+**/obj/
+**/out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Dotnet environment variables
+*.dotCover
+*.ncrunch*
+*.localhistory/
+*.vspscc
+*.vssscc
+
+# Entity Framework
+**/Migrations/*Designer.cs
+**/Migrations/*.resx
+**/Migrations/*Snapshot.cs
+
+#########################################
+# React/Node frontend (create-react-app)
+#########################################
+
+frontend/task-client/node_modules/
+frontend/task-client/.pnp/
+frontend/task-client/.pnp.js
+
+# Build output
+frontend/task-client/build/
+
+# Testing
+frontend/task-client/coverage/
+
+# IDEs
+frontend/task-client/.idea/
+frontend/task-client/.vscode/
+
+# macOS
+frontend/task-client/.DS_Store
