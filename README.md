@@ -43,7 +43,7 @@ http://localhost:5289/tasks
 - POST /tasks – create a task
 - PATCH /tasks/{id} – update a task (e.g. isCompleted, title)
 
-In-memory DB resets on restart.
+**NOTE:** In-memory DB resets on restart.
 
 ## Frontend Setup (React + Vite)
 
