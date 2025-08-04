@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState, type PropsWithChildren } from 'react';
+import { useCallback, useEffect, useMemo, useState, type PropsWithChildren } from 'react';
 import {
   NewTaskId,
   TasksApiContext,
@@ -17,7 +17,7 @@ export const API_URL = 'http://localhost:5289/tasks';
  */
 export const TasksApiContextProvider = ({ children }: PropsWithChildren) => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Default to true because we will fetch tasks on mount
   const [isLoadingError, setIsLoadingError] = useState('');
   const [isSaving, setIsSaving] = useState<TaskSaving>({});
   const [isSavingError, setIsSavingError] = useState<TaskSavingError>({});
@@ -31,7 +31,6 @@ export const TasksApiContextProvider = ({ children }: PropsWithChildren) => {
   const fetchTasks = useCallback(async (): Promise<Task[]> => {
     try {
       setIsLoading(true);
-      setIsLoadingError('');
       const response = await fetch(API_URL);
       if (!response.ok) {
         setIsLoading(false);
@@ -42,6 +41,8 @@ export const TasksApiContextProvider = ({ children }: PropsWithChildren) => {
       const data = await response.json();
       setTasks(data);
       setIsLoading(false);
+      // Clear any previous errors
+      setIsLoadingError('');
       return data;
     } catch (error) {
       setIsLoading(false);
@@ -52,6 +53,11 @@ export const TasksApiContextProvider = ({ children }: PropsWithChildren) => {
       return [];
     }
   }, [setTasks]);
+
+  // We'll load the tasks when the provider mounts
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
 
   /**
    * Create a new task
