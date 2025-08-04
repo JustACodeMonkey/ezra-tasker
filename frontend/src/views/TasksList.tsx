@@ -11,17 +11,13 @@ import {
 } from '@/shared';
 import { useEffect, type Dispatch, type SetStateAction } from 'react';
 
-type TaskListProps = {
-  isAddingTask: boolean;
-  setIsAddingTask: Dispatch<SetStateAction<boolean>>;
-};
-
 /**
  * This component fetches and displays a list of tasks using the TaskCard component.
  * @returns The TasksList component fetches and displays a list of tasks using the TaskCard component.
  */
-export const TasksList = ({ isAddingTask, setIsAddingTask }: TaskListProps) => {
-  const { tasks, isLoading, isLoadingError, fetchTasks } = useTaskApiContext();
+export const TasksList = () => {
+  const { tasks, isLoading, isLoadingError, isAddingTask, setIsAddingTask, fetchTasks } =
+    useTaskApiContext();
 
   // If there are NO tasks and we're done loading, we should show the add task card
   useEffect(() => {

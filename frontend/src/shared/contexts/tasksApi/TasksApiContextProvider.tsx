@@ -21,6 +21,7 @@ export const TasksApiContextProvider = ({ children }: PropsWithChildren) => {
   const [isLoadingError, setIsLoadingError] = useState('');
   const [isSaving, setIsSaving] = useState<TaskSaving>({});
   const [isSavingError, setIsSavingError] = useState<TaskSavingError>({});
+  const [isAddingTask, setIsAddingTask] = useState(false);
 
   /**
    * Fetch tasks from the API
@@ -153,6 +154,8 @@ export const TasksApiContextProvider = ({ children }: PropsWithChildren) => {
       isLoadingError,
       isSaving,
       isSavingError,
+      isAddingTask,
+      setIsAddingTask,
       fetchTasks,
       createTask,
       updateTask,
@@ -164,6 +167,8 @@ export const TasksApiContextProvider = ({ children }: PropsWithChildren) => {
       isLoadingError,
       isSaving,
       isSavingError,
+      isAddingTask,
+      setIsAddingTask,
       fetchTasks,
       createTask,
       updateTask,

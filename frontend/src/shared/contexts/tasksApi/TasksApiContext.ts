@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, type Dispatch, type SetStateAction } from 'react';
 import type { Task, TaskCreateUpdate } from '../../types/Task';
 
 export const NewTaskId = 'NEW_TASK';
@@ -16,6 +16,8 @@ export type TasksApiContextValues = {
   isLoadingError: string;
   isSaving: TaskSaving;
   isSavingError: TaskSavingError;
+  isAddingTask: boolean;
+  setIsAddingTask: Dispatch<SetStateAction<boolean>>;
   fetchTasks: () => Promise<Task[]>;
   createTask: (task: TaskCreateUpdate) => Promise<boolean>;
   updateTask: (id: string, task: TaskCreateUpdate) => Promise<boolean>;

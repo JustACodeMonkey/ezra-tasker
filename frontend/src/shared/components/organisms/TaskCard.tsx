@@ -68,7 +68,7 @@ export const TaskCard = ({ task, mode = 'view', onCreateComplete }: TaskCardProp
     <div className="relative w-full max-w-sm">
       <Card key={task.id} className="w-full">
         <CardHeader className={viewMode !== 'view' ? 'gap-4' : ''}>
-          <CardTitle className="line-clamp-2">
+          <CardTitle className={`line-clamp-2 ${viewMode !== 'view' && 'overflow-visible'}`}>
             {viewMode === 'view' ? (
               task.title
             ) : (
@@ -79,13 +79,16 @@ export const TaskCard = ({ task, mode = 'view', onCreateComplete }: TaskCardProp
                 <Input
                   id={idForTitle}
                   value={taskTitle}
+                  className="font-normal text-foreground"
                   disabled={isSaving[task.id]}
                   onChange={(e) => setTaskTitle(e.target.value)}
                 />
               </div>
             )}
           </CardTitle>
-          <CardDescription className="text-sm text-muted-foreground whitespace-pre-wrap line-clamp-6">
+          <CardDescription
+            className={`text-sm text-muted-foreground whitespace-pre-wrap line-clamp-6 ${viewMode !== 'view' && 'overflow-visible'}`}
+          >
             {viewMode === 'view' ? (
               task.description
             ) : (
@@ -96,6 +99,7 @@ export const TaskCard = ({ task, mode = 'view', onCreateComplete }: TaskCardProp
                 <Textarea
                   id={idForDescription}
                   value={taskDescription}
+                  className="font-normal text-foreground"
                   disabled={isSaving[task.id]}
                   onChange={(e) => setTaskDescription(e.target.value)}
                 />
